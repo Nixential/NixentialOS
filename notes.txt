@@ -1,0 +1,13 @@
+Install: - nasm
+         - qemu-system-x86
+
+Assemble as binary: nasm -f bin boot.asm -o ./boot.bin
+Boot from hard disk(hda): qemu-system-x86_64 -hda ./boot.bin
+
+Notes about Real Mode: 
+- In real mode we can access only 1MB of memory!
+- Only 16 bits can be accessed at one time 
+- Memory is accessed through the segmentation memory model
+- Based on the origin x86 design (eg: 8086 processor)
+- Absolutely no memory security
+- No hardware security
