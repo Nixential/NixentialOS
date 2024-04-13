@@ -11,3 +11,16 @@ Notes about Real Mode:
 - Based on the origin x86 design (eg: 8086 processor)
 - Absolutely no memory security
 - No hardware security
+
+Segmentation memory model:
+    - Programs can be loaded in different areas of memory but run t/o problems
+    - Multiple segments are available through the sue of segment registers
+
+Segment Registers:
+    - CS: Code Segment
+    - SS: Stack Segment
+    - DS: Data Segment
+    - ES: Extra Segment
+
+Calculate absolute position in ram:
+    - Take the segment register, multiply it by 16 and add the offset

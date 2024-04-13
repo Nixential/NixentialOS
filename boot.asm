@@ -1,10 +1,28 @@
 ; Set origin address
-ORG 0x7c00
+ORG 0
 
 ; Tell the assembler that we are using 16bit architecture
 BITS 16
 
+_start:
+    jmp short start
+    nop
+
+ times 33 db 0 ; create 33 bytes after short jump for the bios to fill them instead of corrupting our code
+
 start:
+    jmp 0x7c0:step2 ; make the code segment 07xc0
+
+step2:
+    cli ; Clear Interrupts
+    mov ax, 0x7c0
+    mov ds, ax
+    mov es, ax
+    ;Setup the stack segment
+    mov ax, 0x00
+    mov ss, ax
+    mov sp, 0x7c00
+    sti ; Enables Interrupts
     mov si, message
     call print
     ; keep humping to the same line
